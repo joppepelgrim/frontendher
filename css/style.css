@@ -1,0 +1,716 @@
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+
+/*scroll-behavior zorgt dat de pagina soepel scrollt als de gebruiker zich binnen de equipment pagina met de "side nav" navigeert*/
+
+html {
+	font-size: 20px;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-size: 0.8rem;
+	color: #3a3a3a;
+	line-height: 1.4;
+	font-family: "Open Sans", sans-serif;
+	font-weight: normal;
+	background: #f0f0f0;
+}
+
+a {
+	text-decoration: none;
+	color: #3a3a3a;
+}
+
+ul,
+ol {
+	list-style-type: none;
+}
+
+p {
+	margin-bottom: 1.4em;
+}
+
+br {
+	margin: 0 !important;
+	height: 0%;
+}
+
+figure {
+	position: relative;
+}
+
+
+/* door object-fit: cover; past de afbeelding zich qua grootte aan het element waar die zich in bevind*/
+
+figure img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+/* ------ HEADERS -----------------*/
+
+h1,
+h2,
+h3,
+h4 {
+	font-weight: 900;
+	margin-bottom: 0.25rem;
+	font-family: "Roboto";
+}
+
+h1 {
+	font-size: 1.2rem;
+}
+
+h2 {
+	font-size: 1rem;
+}
+
+h3 {
+	font-size: 1rem;
+}
+
+h4 {
+	font-size: 1rem;
+}
+
+
+/* ------- GENERAL (MAX-WIDTH) -----------------*/
+
+
+/* max-width zodat als de pagina heel erg groot wordt de content een maximale grootte heeft. Dit zorgt voor leesbaarheid op grote schermen */
+
+header,
+main,
+footer {
+	max-width: 130rem;
+	margin: 0 auto;
+}
+
+section {
+	position: relative;
+	max-width: 70rem;
+	margin: 0 auto;
+}
+
+section.fullscreen {
+	max-width: 100%;
+}
+
+
+/* ------- HEADER STICKY----------  */
+
+
+/*header nav, .burger { display: block;}*/
+
+
+/*als de class sticky is toegevoegd wordt de header fixed, dus sticky*/
+
+header.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+
+/*als de header "sticky" is wordt de grijze pre-header niet weergegeven*/
+
+header.sticky section:first-child {
+	display: none;
+}
+
+
+/* Preheader */
+
+header section:first-child {
+	background: #636363;
+	color: #FFF;
+	max-width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.6rem;
+	transition: 250ms ease;
+}
+
+header section:first-child p {
+	margin: 0.5rem auto;
+	text-align: center;
+	width: calc(100% - 2rem);
+}
+
+header section:first-child p a {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+
+/* Header */
+
+header {
+	background: #e18a00;
+	/* z-index om de header naar voren te halen ten opzichte van andere onderdelen */
+	z-index: 99;
+	/* je maakt de header absoluut waardoor je het overal op de pagina kunt plaatsen, daarbij geef je het top: 0 om het bovenaan te positioneren */
+	position: absolute;
+	margin: auto;
+	width: 100%;
+	top: 0;
+	color: #000;
+}
+
+header a {
+	color: #000;
+}
+
+header h1 {
+	display: none;
+}
+
+header nav {
+	background: #e18a00;
+	position: relative;
+	max-width: 70rem;
+	margin: 0 auto;
+}
+
+header nav ul {
+	/*deze moet absolute zijn omdat je deze met transform: translateY(0%) naar boven wilt plaatsen*/
+	position: absolute;
+	bottom: 0;
+	transform: translateY(0%);
+	width: 100%;
+	background: #e18a00;
+	padding: 0 1rem;
+	/*de z-index is hier -1 zodat de nav ul achter de content geplaatst moet worden zodat het niet zichtbaar is (op de mobiele versie), de nav ul moet pas zichtbaar worden als de gebruiker op de hamburger klikt */
+	z-index: -1;
+	/*deze transition zorgt ervoor dat het menu soepel verschijnt wanneer de gebruiker op  het menu klikt (op mobiele versie)*/
+	transition: 250ms ease;
+}
+
+header nav ul li {
+	margin: 1.5rem 0;
+}
+
+header nav a img {
+	height: 50px;
+}
+
+
+/* ------- FOOTER ---------------  */
+
+footer {
+	margin-bottom: 3rem;
+}
+
+footer nav {
+	max-width: 40rem;
+	width: calc(100% - 2rem);
+	margin: 0 auto;
+}
+
+footer nav ul {
+	display: flex;
+	justify-content: flex-end;
+	/* hier wordt flex-wrap gebruikt omdat de woorden van de li van de ul anders opgebroken worden op mobiele versie */
+	flex-wrap: wrap;
+}
+
+footer nav ul li {
+	margin-left: 1rem;
+	margin-top: 0.5rem;
+}
+
+
+/* ------- MOBILE MENU ----------  */
+
+header nav {
+	/*alle elementen in de nav staan flex zodat ze naast elkaar komen te staan*/
+	display: flex;
+	align-items: center;
+}
+
+header nav label {
+	margin: 0 1rem;
+	cursor: pointer;
+	padding-left: 1rem;
+}
+
+header nav a {
+	display: flex;
+	padding: 0.3rem 0;
+}
+
+
+/* ------- BURGER -----------------*/
+
+header nav .burger {
+	position: absolute;
+	right: 3.5rem;
+	top: 1.15rem;
+	height: 1rem;
+	width: 1.1rem;
+	cursor: pointer;
+	transition: 250ms ease;
+}
+
+header nav input.burger {
+	opacity: 0;
+	z-index: 99;
+}
+
+header nav .burger:checked~ul {
+	transform: translateY(100%);
+}
+
+
+/* Om een hamburger te maken worden 3 span's gebruikt. deze span krijgen een width en height binnen in de div waar ze zich bevinden */
+
+header nav div.burger span {
+	width: 100%;
+	height: 2px;
+	background: #000;
+	position: absolute;
+	border-radius: 3px;
+	transition: 250ms ease;
+}
+
+
+/* Hier worden de 3 span's binnen de div gepositioneerd */
+
+header nav div.burger span:nth-of-type(2) {
+	top: 6px;
+}
+
+header nav div.burger span:nth-of-type(3) {
+	top: 12px;
+}
+
+
+/* Wanneer de checkbox op "checked" staat worden de span's verschoven. Door middel van transform: rotate () ontstaat een animatie */
+
+header nav input.burger:checked~div.burger span:nth-of-type(1) {
+	top: 0px;
+	transform: translateY(7px) rotate(45deg);
+}
+
+header nav input.burger:checked~div.burger span:nth-of-type(2) {
+	top: 6px;
+	transform: scaleX(0);
+}
+
+header nav input.burger:checked~div.burger span:nth-of-type(3) {
+	top: 12px;
+	transform: translateY(-5px) rotate(-45deg);
+}
+
+
+/* ------- SEARCH ---------------- */
+
+header nav input.search {
+	display: none;
+}
+
+header nav input.search+label {
+	margin-left: auto;
+}
+
+header nav input.search+label img {
+	height: 18px;
+	margin-top: 5px;
+}
+
+header nav input.search:checked~form input {
+	opacity: 1;
+	pointer-events: all;
+}
+
+header nav form input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	pointer-events: none;
+}
+
+
+/* ------- HOMEPAGE -------------  */
+
+
+/* - Gridnav - */
+
+section.gridnav ul li {
+	width: 100%;
+	overflow: hidden;
+}
+
+section.gridnav ul li a {
+	min-height: 340px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+	color: #FFF;
+	font-weight: 900;
+	text-align: center;
+	padding: 0 0.5rem;
+	/*Deze transition zorgt ervoor dat de afbeelding niet statisch maar soepel vergroot wordt*/
+	transition: 250ms ease;
+}
+
+
+/*vergroot de afbeelding wanneer je met de muis eroverheen gaat */
+
+section.gridnav ul li a:hover {
+	transform: scale(1.1);
+}
+
+
+/* verkleint de tekst van de afbeelding wanneer de afbeelding vergroot wordt, zo blijft de tekst dezelfde grootte*/
+
+section.gridnav ul li a:hover strong {
+	transform: scale(0.9);
+}
+
+
+/* deze transition zorgt ervoor dat de tekst niet statisch kleiner wordt wanneer de afbeelding vergroot*/
+
+section.gridnav ul li a strong {
+	transition: 250ms ease;
+}
+
+
+/*  -  Subscribe  -  */
+
+section.subscribe {
+	border-bottom: 10px solid #e18a00;
+	border-top: 10px solid #e18a00;
+}
+
+section.subscribe article {
+	max-width: 70rem;
+	margin: 2rem auto;
+	color: #FFF;
+	width: calc(100% - 2rem);
+}
+
+
+/* door de article aan max-width te geven valt het op desktop niet over de afbeelding heen*/
+
+section.subscribe article>* {
+	max-width: 24rem;
+}
+
+section.subscribe article>h2 {
+	font-size: 1.2rem;
+	text-transform: uppercase;
+}
+
+section.subscribe article p {
+	font-size: 0.6rem;
+	text-align: right;
+}
+
+
+/* position: relative; !!!!*/
+
+section.subscribe article span {
+	color: #e85c41;
+	font-size: 150%;
+	position: relative;
+	top: 6px
+}
+
+section.subscribe article form>* {
+	display: block;
+	width: 100%;
+}
+
+section.subscribe article form input {
+	height: 1rem;
+	padding: 1rem 0.5rem;
+	font-size: 16px;
+	border-radius: 4px;
+	margin-bottom: 0.5rem;
+	box-sizing: border-box;
+}
+
+section.subscribe article form label {
+	text-transform: uppercase;
+}
+
+section.subscribe article form input[type=submit] {
+	text-transform: uppercase;
+	height: auto;
+	width: auto;
+	padding: 1.2rem 2rem;
+	background: #e18a00;
+	color: #FFF;
+	margin-top: 1rem;
+	cursor: pointer;
+}
+
+
+/*  -  Content  -  */
+
+
+/* de calc functie gebruik ik hier om 2rem van de breedte af te halen, zo heeft de content van de section een border en raakt het niet de volle breedte*/
+
+section.content {
+	max-width: 40rem;
+	margin: 2rem auto;
+	width: calc(100% - 2rem);
+}
+
+section.content a {
+	text-decoration: underline;
+}
+
+section.content a:hover {
+	color: #e18a00;
+}
+
+section.content h1 {
+	font-size: 2rem;
+	color: #e18a00;
+}
+
+section.content h2 {
+	font-size: 1.5rem;
+	color: #e18a00;
+}
+
+
+/* hier gebruik ik ten opzichte van de werkelijke site wel een decimal list-style-type. Dit is overzichtelijker omdat deze lijst als cijfers binnen de <p> gedefineerd was.*/
+
+section.content ol {
+	list-style-type: decimal;
+	margin-left: 1rem;
+	width: calc(100% - 1rem);
+}
+
+
+/*section.content ol li::marker {font-weight: 900;}*/
+
+
+/*  -  Image backgrounds  -  */
+
+section.gridnav ul li:nth-of-type(1) a {
+	background: url("../img/human-flag.jpg") center center / cover;
+}
+
+section.gridnav ul li:nth-of-type(2) a {
+	background: url("../img/Calisthenics-Equipment-at-Home.jpg") center center / cover;
+}
+
+section.gridnav ul li:nth-of-type(3) a {
+	background: url("../img/workou.jpg") center center / cover;
+}
+
+section.subscribe {
+	background: url("../img/bgimage.png") center center / cover
+}
+
+
+/* ------- EQUIPMENT PAGE ----------  */
+
+.equipment main {
+	display: flex;
+	/* door deze flex-wrap wordt de side nav niet opgebroken en komt deze onder de content te staan */
+	flex-wrap: wrap;
+	max-width: 65rem;
+}
+
+.equipment main>section,
+.equipment main>aside section {
+	background: #FFF;
+	box-shadow: 0 0 10px rgba(232, 234, 237, 0.5);
+	border: 1px solid rgba(232, 234, 237, 1);
+	margin: 2rem auto 2rem;
+	max-width: 40rem;
+	box-sizing: border-box;
+	padding: 1.5rem;
+	font-size: 0.8rem;
+	line-height: 1.6;
+}
+
+.equipment main>section img {
+	max-width: 100%;
+	margin-top: 1rem;
+}
+
+.equipment main>section h1 {
+	font-size: 1.5rem;
+	line-height: 1.2;
+	color: #e18a00;
+}
+
+.equipment main>section h2 {
+	font-size: 1.2rem;
+	color: #e18a00;
+}
+
+.equipment main>section em {
+	font-weight: 500;
+	margin-bottom: 1rem;
+	display: block;
+}
+
+.equipment main>section nav,
+.equipment main>section article section {
+	border-top: 2px solid #ddd;
+	padding-top: 1rem;
+	margin-top: 2rem;
+}
+
+.equipment main>section ul {
+	list-style: disc;
+}
+
+.equipment main>section ul ul {
+	margin-left: 1rem;
+	width: calc(100% - 1rem);
+}
+
+
+/* met ::marker spreek je alleen de bullet point aan in een ul */
+
+.equipment main>section ul li::marker {
+	color: #e18a00;
+}
+
+.equipment main>section ul li {
+	margin-top: 0.5rem;
+}
+
+.equipment main>section ul li a:hover {
+	text-decoration: underline;
+}
+
+.equipment main>section p a {
+	border-bottom: 3px solid #e18a00;
+	box-sizing: border-box;
+	transition: 250ms ease;
+}
+
+.equipment main>section p a:hover {
+	background: #e18a00;
+}
+
+.equipment main>section section ul {
+	margin-left: 1rem;
+	width: calc(100% - 1rem);
+	list-style: disc;
+	margin-bottom: 1rem;
+}
+
+.equipment main>section section ul li a {
+	color: #e18a00;
+}
+
+.equipment main>section section ul li::marker {
+	color: #3a5a3a
+}
+
+.equipment main>section a.btn {
+	display: block;
+	background: #e85c41;
+	max-width: 25rem;
+	margin: 0 auto;
+	text-align: center;
+	padding: 1rem;
+	border: none;
+	border-radius: 2px;
+	color: #fff;
+}
+
+.equipment main aside {
+	margin: 1rem auto 2rem auto;
+}
+
+.equipment main aside section {
+	margin: 1rem auto;
+}
+
+.equipment main aside section h2 strong {
+	color: #e18a00;
+}
+
+.equipment main aside section p {
+	margin-bottom: 0;
+}
+
+.equipment main aside section ul {
+	margin-top: 1rem;
+}
+
+.equipment main aside section ul li {
+	padding: 0.5rem 0;
+	border-top: 2px solid #ddd;
+	;
+}
+
+.equipment main aside section ul li a:hover {
+	text-decoration: underline;
+}
+
+
+/* ------- MEDIA QUERIES ----------  */
+
+@media only screen and (min-width: 1050px) {
+	/* ------- MOBILE MENU ----------  */
+	.burger,
+	.burger+label {
+		display: none;
+	}
+	header nav input.search+label {
+		order: 99;
+		margin-left: 1rem;
+		padding-left: 0;
+	}
+	header nav ul {
+		all: unset;
+		list-style: none;
+		display: flex;
+		margin-left: auto;
+	}
+	header nav ul li {
+		margin: 0;
+		padding: 1rem;
+	}
+	header nav ul li:hover {
+		background: rgba(10, 10, 10, 0.31);
+	}
+	header nav ul li:hover a {
+		color: #FFF;
+	}
+	/* ------- HOMEPAGE ----------  */
+	section.gridnav ul {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	header h1 {
+		display: block;
+	}
+	.equipment main>section h1 {
+		font-size: 2rem;
+	}
+	.equipment main>section h2 {
+		font-size: 1.5rem;
+	}
+}
