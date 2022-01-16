@@ -399,6 +399,9 @@ section.subscribe {
 	border-top: 10px solid #e18a00;
 }
 
+
+/* door de article aan max-width te geven valt het op desktop niet over de afbeelding heen*/
+
 section.subscribe article {
 	max-width: 70rem;
 	margin: 2rem auto;
@@ -407,7 +410,7 @@ section.subscribe article {
 }
 
 
-/* door de article aan max-width te geven valt het op desktop niet over de afbeelding heen*/
+/* Hier geef je met * alle kinderen die direct na article komen een max-width */
 
 section.subscribe article>* {
 	max-width: 24rem;
@@ -423,14 +426,11 @@ section.subscribe article p {
 	text-align: right;
 }
 
-
-/* position: relative; !!!!*/
-
 section.subscribe article span {
 	color: #e85c41;
 	font-size: 150%;
 	position: relative;
-	top: 6px
+	top: .3rem
 }
 
 section.subscribe article form>* {
@@ -501,8 +501,9 @@ section.content ol {
 	width: calc(100% - 1rem);
 }
 
-
-/*section.content ol li::marker {font-weight: 900;}*/
+section.content ol li::marker {
+	font-weight: 900;
+}
 
 
 /*  -  Image backgrounds  -  */
@@ -533,6 +534,9 @@ section.subscribe {
 	max-width: 65rem;
 }
 
+
+/* hier gebruik ik een komma puur omdat de section en aside section dezelfde styling nodig heeft en dit weer een regel css scheelt*/
+
 .equipment main>section,
 .equipment main>aside section {
 	background: #FFF;
@@ -546,40 +550,40 @@ section.subscribe {
 	line-height: 1.6;
 }
 
-.equipment main>section img {
+.equipment main section img {
 	max-width: 100%;
 	margin-top: 1rem;
 }
 
-.equipment main>section h1 {
+.equipment main section h1 {
 	font-size: 1.5rem;
 	line-height: 1.2;
 	color: #e18a00;
 }
 
-.equipment main>section h2 {
+.equipment main section h2 {
 	font-size: 1.2rem;
 	color: #e18a00;
 }
 
-.equipment main>section em {
+.equipment main section em {
 	font-weight: 500;
 	margin-bottom: 1rem;
 	display: block;
 }
 
-.equipment main>section nav,
-.equipment main>section article section {
+.equipment main section nav,
+.equipment main section article section {
 	border-top: 2px solid #ddd;
 	padding-top: 1rem;
 	margin-top: 2rem;
 }
 
-.equipment main>section ul {
+.equipment main section ul {
 	list-style: disc;
 }
 
-.equipment main>section ul ul {
+.equipment main section ul ul {
 	margin-left: 1rem;
 	width: calc(100% - 1rem);
 }
@@ -587,44 +591,44 @@ section.subscribe {
 
 /* met ::marker spreek je alleen de bullet point aan in een ul */
 
-.equipment main>section ul li::marker {
+.equipment main section ul li::marker {
 	color: #e18a00;
 }
 
-.equipment main>section ul li {
+.equipment main section ul li {
 	margin-top: 0.5rem;
 }
 
-.equipment main>section ul li a:hover {
+.equipment main section ul li a:hover {
 	text-decoration: underline;
 }
 
-.equipment main>section p a {
+.equipment main section p a {
 	border-bottom: 3px solid #e18a00;
 	box-sizing: border-box;
 	transition: 250ms ease;
 }
 
-.equipment main>section p a:hover {
+.equipment main section p a:hover {
 	background: #e18a00;
 }
 
-.equipment main>section section ul {
+.equipment main section section ul {
 	margin-left: 1rem;
 	width: calc(100% - 1rem);
 	list-style: disc;
 	margin-bottom: 1rem;
 }
 
-.equipment main>section section ul li a {
+.equipment main section section ul li a {
 	color: #e18a00;
 }
 
-.equipment main>section section ul li::marker {
+.equipment main section section ul li::marker {
 	color: #3a5a3a
 }
 
-.equipment main>section a.btn {
+.equipment main section a.btn {
 	display: block;
 	background: #e85c41;
 	max-width: 25rem;
@@ -671,15 +675,18 @@ section.subscribe {
 
 @media only screen and (min-width: 1050px) {
 	/* ------- MOBILE MENU ----------  */
+    /*vanaf 1050px (desktop) worden de burger en het menu niet meer weergegeven*/
 	.burger,
 	.burger+label {
 		display: none;
 	}
+
 	header nav input.search+label {
 		order: 99;
 		margin-left: 1rem;
 		padding-left: 0;
 	}
+    /*alle vorige styling wordt van de nav ul gehaald wanneer het 1050px bereikt*/
 	header nav ul {
 		all: unset;
 		list-style: none;
@@ -707,10 +714,10 @@ section.subscribe {
 	header h1 {
 		display: block;
 	}
-	.equipment main>section h1 {
+	.equipment main section h1 {
 		font-size: 2rem;
 	}
-	.equipment main>section h2 {
+	.equipment main section h2 {
 		font-size: 1.5rem;
 	}
 }
